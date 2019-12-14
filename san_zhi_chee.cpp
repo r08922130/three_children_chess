@@ -303,6 +303,7 @@ step next_step(int board[SIZE][SIZE], int my_color, chess white[SIZE] , chess bl
         for(int i = 0; i < SIZE ; i++){
             int dir = try_go(board, my_chess,i);
             if (dir != 0){
+                //win
                 cout << "after move : "<< endl;
                 print_board(board);
                 previous_board(board, my_chess, i, dir);
@@ -478,11 +479,10 @@ step next_step(int board[SIZE][SIZE], int my_color, chess white[SIZE] , chess bl
                 }
             }    
         }
-    }else if(result != my_color){
-        // lose
-        step s = {.c = my_color,.move = RIGHT, .win = -1};
-        return s;
     }
+
+    step s = {.c = my_chess[SIZE-1],.move = RIGHT, .win = -1};
+    return s;
 }
 // >>
 void go_right(int board[SIZE][SIZE],chess c[SIZE], int i){
